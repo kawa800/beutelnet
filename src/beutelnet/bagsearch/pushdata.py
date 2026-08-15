@@ -19,6 +19,10 @@ def push_new_data():
     ocrtext = ocr_processor.scan_dir()
 
     # 3. Push data into model
+    dictionaries = []
     for dictionary in ocrtext:
-        vacuum = VacuumBags.objects.create(supermarket=dictionary["supermarket"], vacuum=dictionary["vacuum"], size=dictionary["size"])
+        result = VacuumBags(supermarket=dictionary["supermarket"], vacuum=dictionary["vacuum"], size=dictionary["size"])
+        dictionaries.append(result)
+
+    VacuumBags.objects.bulk_create(dictionaries)
 
