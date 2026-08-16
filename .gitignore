@@ -6,5 +6,6 @@ src/.idea
 *.html
 *.csv
 *.jpg
+src/beutelnet/data/
 .env
 src/beutelnet/bagsearch/

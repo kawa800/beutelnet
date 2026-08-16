@@ -2,7 +2,11 @@
 Website to find the correct bag size for different vacuums.
 
 
-
+# Dataset
+Amount of data by (vacuum bag model, compatible products): 
+* Edeka: (1,185)
+* DM:  (11,1952)
+* Rewe (7, 2500)
 
 
 
