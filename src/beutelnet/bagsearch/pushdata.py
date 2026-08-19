@@ -5,10 +5,10 @@ from ocr.image_ocr.ocr_image import ProcessImage
 from ocr.image_ocr.clean_ocr_output import ProcessOcr
 from ocr.image_pre_processor.preprocess import PreProcessor
 from bagsearch.models import VacuumBags
+from data.rewe import push_data
 
-
-"""Push data through pipeline. Commit to database."""
-def push_new_data():
+"""Push EDEKA data through pipeline. Commit to database."""
+def push_new_OCR_data():
     # 1. Preprocess the images in the raw directory
     image_processor = PreProcessor(settings.STORAGE_RAW_IMAGES_DIR, settings.STORAGE_PRE_PROCESSED_IMAGES_DIR)
     image_processor.preprocess()
@@ -25,4 +25,3 @@ def push_new_data():
         dictionaries.append(result)
 
     VacuumBags.objects.bulk_create(dictionaries)
-
