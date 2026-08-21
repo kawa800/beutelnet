@@ -21,3 +21,11 @@ class VacuumBags(models.Model):
             "vacuum": self.vacuum,
             "size": self.size
         }
+
+
+class TestBags(models.Model):
+    supermarket = models.CharField(max_length=200)
+    vacuum = models.CharField(max_length=200)
+    size = models.CharField(max_length=200)
+
+
