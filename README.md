@@ -1,10 +1,11 @@
 # 🧹 Beutelnet
-Website to find the correct bag size for different vacuums.
+Die größte Datenbank zu Staubsaugerbeuteln und den mit ihnen kompatiblen Staubsaugern. Beinhaltet die Eigenmarken von Edeka, Rewe und DM.
 
 
-# Dataset
+# Datensatz
+
 Amount of data by (vacuum bag model, compatible products): 
-* Edeka: (1,185)
+* Edeka: (4,1095)
 * DM:  (11,1952)
 * Rewe (7, 2527)
 
