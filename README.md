@@ -1,30 +1,23 @@
-# 🧹 Beutelnet
-Die größte Datenbank zu Staubsaugerbeuteln und den mit ihnen kompatiblen Staubsaugern. Beinhaltet die Eigenmarken von Edeka, Rewe und DM.
-
+# 🧹 Beutelnet: Match ihren Staubsauger mit dem kompatiblen Staubsaugerbeutel
+Die größte Datenbank zu deutschen Staubsaugerbeuteln und den mit ihnen kompatiblen Staubsaugern. Beinhaltet die Eigenmarken von Edeka, Rewe und DM. Damit man nicht im Supermarkt stehen muss, und ellenlange Verpackungsrückseiten durchlesen muss - eine höchstwichtigste Anwendung.
 
 # Datensatz
-
-Amount of data by (vacuum bag model, compatible products): 
+Die Datenbank trackt mehr als 5.500 kompatible Produkte. Die Anzahl der Staubsaugerbeutel-Größen zu kompatiblen Produkten sind:
 * Edeka: (4,1095)
 * DM:  (11,1952)
 * Rewe (7, 2527)
 
+# Datenquellen 
+Die Daten stammen hauptsächlich aus zwei Quellen.
+* Verpackungen
+    * Supermärkte wie EDEKA haben ihre Verpackungsrückseiten nicht digitalisiert. Die Rückseiten wurden fotografiert und der Text wurde dann mit Python's Tesseract Wrapper (OCR) prozessiert. Mit Python-Skripten und Pandas wurden die Daten dann bereinigt.
+* Websiten
+    * Supermärkte wie DM haben mehrere Daten dazu, welcher Staubsauger zu welchem Staubsaugerbeutel passt. Diese sind jedoch über mehrere Websiten verstreut. Mehrere Selenium-Webscraper haben diese Websiten durchscraped und zu einem einzelnen Datensatz zusammengefasst. Auch hier wurden Ausreißer mit Pandas bereinigt.
 
-
-# Data
-Data stems from two sources:
-* OCR of packaging
-    * Stores such as EDEKA haven't digitalised what vacuum cleaners the bag is compatible with at all. So I went into stores, took photos and gathered data from these images.
-* Scraped data from groceries' websites
-    * Rewe and DM have huge product lists. But the UI makes them difficult to search.
-
-The custom command 'poetry run manage.py push_new_data' pushes OCR based data into the model.
-The command fires up three modules in succession:
-1. Apply pre-processing to the images.
-2. Apply OCR
-3. Push data into Django Model
-
-The other dataset was data scraped with Selenium. Then cleaned with pandas. Again it was a one-time push into the dataset. As of now the pipeline is not automated, since the dataset is fixed.
-
-
-
+# Bedienung
+Falls Sie die Django-App 'bagsearch' importieren möchten, benötigen Sie poetry. Daraufhin legen Sie ihre Daten im Verzeichnis 'data' und den entsprechenden Verzeichnissen ab.
+Die Hauptlogik, um OCR-basierte Daten in ein Django-Model zu pushen funktioniert über den Django-Custom-Command:
+`poetry run manage.py push_new_data`. Croppen Sie dabei die Bilder der Verpackungsrückseiten so eng wie möglich. Die Logik in der Directory 'ocr' wendet daraufhin Preprocessing, wie etwa Grayscaling, an und pusht die Daten in eine SQLite Datenbank.
+Mit folgenden Optionen können Sie die Daten auch erst einmal in ein Test-Model oder eine CSV pushen:
+`poetry run manage.py push_new_data --test`
+`poetry run manage.py push_new_data --csv`
