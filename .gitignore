@@ -8,3 +8,4 @@ src/.idea
 *.jpg
 .env
 src/beutelnet/bagsearch/
+beutelnet.gif

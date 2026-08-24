@@ -1,6 +1,8 @@
 # 🧹 Beutelnet: Matcht ihren Staubsauger mit dem kompatiblen Staubsaugerbeutel
 Die größte Datenbank zu deutschen Staubsaugerbeuteln und den mit ihnen kompatiblen Staubsaugern. Beinhaltet die Eigenmarken von Edeka, Rewe und dm. Damit niemand mehr im Supermarkt stehen und ellenlange Verpackungsrückseiten durchlesen muss. Ein sehr wichtiges Projekt.
 
+![Demo](beutelnet.gif)
+
 # Datensatz
 Die Datenbank trackt mehr als 5.500 kompatible Produkte, verteilt auf drei Supermärkte.
 
